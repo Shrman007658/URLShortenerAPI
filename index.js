@@ -45,11 +45,12 @@ app.post('/getshort',middlewares.urlvalidator,middlewares.emailvalidator,(req,re
     {
 
         var randid=Math.floor(Math.random()*500);
-        console.log(randid+'->'+req.body.url);
+        
         map.set(randid,req.body.url);
-        console.log("The map has been updated");
+        //console.log("The map has been updated");
         const revampedURL=req.protocol + '://' + req.get('host') + req.originalUrl +'/'+randid;
         res.status(200).json({message:revampedURL});
+        
 
     }
 
