@@ -16,9 +16,10 @@ Typical Saturday afternoon fun. 😇
 Do like and support. 
 
 ## How to set up locally?
-Clone the project to a directory of your choice. 
-```https://github.com/Shrman007658/URLShortenerAPI.git```
-Then open up a terminal and run npm install
+Clone the project to a directory of your choice by typing 
+```git clone https://github.com/Shrman007658/URLShortenerAPI.git``` inside the directory. 
+
+Then open up a terminal and run npm install 🙋 
 
 ## Testing
 Test  the server for errors on the return objects. Find solutions and contribute. Power to you! Power to open-source! 
