@@ -39,7 +39,7 @@ app.post('/getshort',middlewares.urlvalidator,middlewares.emailvalidator,(req,re
 {
     //TODO: Design a shorter URL. 
     //Of the format domainname.com/:id number. 
-    if(!req.body.isValidUrl|| !req.body.isValidEmail)
+    if(!req.body.isValidURL|| !req.body.isValidEmail)
     res.status(400).send({message:"Bad URL or Email Address"});
     else
     {
@@ -49,7 +49,7 @@ app.post('/getshort',middlewares.urlvalidator,middlewares.emailvalidator,(req,re
         map.set(randid,req.body.url);
         console.log("The map has been updated");
         const revampedURL=req.protocol + '://' + req.get('host') + req.originalUrl +'/'+randid;
-        res.status(200).send(revampedURL);
+        res.status(200).json({message:revampedURL});
 
     }
 
