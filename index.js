@@ -3,6 +3,7 @@ const bodyParser=require('body-parser');
 const morgan = require('morgan');
 const app=express();
 const middlewares=require('./util/validator.js');
+const timestamp=require('time-stamp');
 
 app.use(morgan("tiny"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,7 +23,7 @@ app.get('/',(req,res)=>
 app.get('/getshort/:id',(req,res)=>
 {
     try {
-        const redirecturl=String(map.get(Number(req.params.id)));
+        const redirecturl=String(map.get(String(req.params.id)));
         
         res.redirect(new URL(redirecturl));
     } catch (error) {
@@ -45,10 +46,11 @@ app.post('/getshort',middlewares.urlvalidator,middlewares.emailvalidator,(req,re
     {
 
         var randid=Math.floor(Math.random()*500);
-        
-        map.set(randid,req.body.url);
+        var ts=timestamp.utc('YYYYMMDDHHmmssms');
+        console.log(ts);
+        map.set(ts,req.body.url);
         //console.log("The map has been updated");
-        const revampedURL=req.protocol + '://' + req.get('host') + req.originalUrl +'/'+randid;
+        const revampedURL=req.protocol + '://' + req.get('host') + req.originalUrl +'/'+ts;
         res.status(200).json({message:revampedURL});
         
 
