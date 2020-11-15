@@ -18,7 +18,7 @@ app.get('/',(req,res)=>
 
 {
     res.sendFile(__dirname+'/views/index.html');
-});
+}); 
 
 app.get('/getshort/:id',(req,res)=>
 {
